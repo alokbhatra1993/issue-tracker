@@ -1,0 +1,56 @@
+<!-- views/create-issue.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Create Issue</title>
+    <!-- Add your CSS and JavaScript dependencies here -->
+</head>
+<body>
+  <div class="create-issue-new">
+    <div class="container"> 
+    <h1>Create Issue</h1>
+    <form action="/create-issue" method="POST">
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" id="title" name="title" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea class="form-control" id="description" name="description" rows="4" required></textarea><br><br>
+
+        <label for="labels">Labels:</label>
+        <input class="form-control" type="text" id="labels" name="labels" placeholder="Add labels separated by commas" required><br><br>
+
+        <label for="author">Author:</label>
+        <input class="form-control" type="text" id="author" name="author" required><br><br>
+
+        <!-- Hidden input to store the project ID -->
+        <input class="form-control" type="hidden" name="projectId" value="<%= projectId %>">
+
+        <input class="form-control" type="submit" value="Create Issue">
+    </form>
+</div>
+</div>
+    <!-- JavaScript for label autocomplete -->
+    <script>
+        // Sample labels data (you can load this from your server)
+        const labelsData = ["Label1", "Label2", "Label3", "Label4"];
+
+        // Input element for labels
+        const labelsInput = document.getElementById("labels");
+
+        // Initialize autocomplete functionality
+        new Awesomplete(labelsInput, {
+            list: labelsData,
+            filter: Awesomplete.FILTER_STARTSWITH,
+            replace: function (text) {
+                const before = this.input.value.match(/^.+,\s*|/)[0];
+                this.input.value = before + text + ", ";
+            }
+        });
+    </script>
+</body>
+</html>

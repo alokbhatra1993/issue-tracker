@@ -1,0 +1,62 @@
+<!-- views/projectDetail.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Detail Page</title>
+  </head>
+  <body>
+    <h1>Project <%= projects[parseInt(projectId)]?.name %></h1>
+
+    <!-- Filter by labels form -->
+    <form action="/filter" method="POST">
+      <label for="labels">Filter by Labels:</label>
+      <input
+        type="text"
+        name="labels"
+        id="labels"
+        placeholder="Enter labels (comma-separated)"
+      />
+      <button type="submit">Filter</button>
+    </form>
+
+    <!-- Filter by author form -->
+    <form action="/filter" method="POST">
+      <label for="author">Filter by Author:</label>
+      <input
+        type="text"
+        name="author"
+        id="author"
+        placeholder="Enter author name"
+      />
+      <button type="submit">Filter</button>
+    </form>
+
+    <!-- Search form -->
+    <form action="/search" method="POST">
+      <label for="search">Search by Title/Description:</label>
+      <input
+        type="text"
+        name="search"
+        id="search"
+        placeholder="Enter keywords"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- List of issues -->
+    <ul>
+      <% issues.forEach(issue => { %>
+      <li>
+        <h3><%= issue.title %></h3>
+        <p><%= issue.description %></p>
+        <p>Author: <%= issue.author %></p>
+      </li>
+      <% }); %>
+    </ul>
+
+    <!-- Create Issue button -->
+    <a href="/create-issue?projectId=<%= projectId %>">Create Issue</a>
+  </body>
+</html>

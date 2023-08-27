@@ -1,0 +1,14 @@
+.btn-submit {
+    background: blue;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 200px;
+    border: 0px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+}

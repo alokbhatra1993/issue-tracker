@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Project Tracker</h1>
+    
+    <h2>List of Projects</h2>
+    <ul>
+        <% projects.forEach(project => { %>
+            <li>
+                <a href="/projectDetail?projectId=<%= project._id %>">
+                    <%= project.name %>
+                </a> - <%= project.author %>
+            </li>
+        <% }); %>
+    </ul>
+    
+
+    <a href="/create-project">Create New Project</a>
+</body>
+</html>
