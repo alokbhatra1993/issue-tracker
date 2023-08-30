@@ -10,6 +10,19 @@
     <title>Create Issue</title>
     <!-- Add your CSS and JavaScript dependencies here -->
 </head>
+<style>
+        body {
+    background: darkblue;
+    color: #fff;
+    padding: 40px;
+}
+input.form-control.create-issue-btn {
+    background: transparent;
+    width: 200px;
+    color: #fff;
+    padding: 10px;
+}
+</style>
 <body>
   <div class="create-issue-new">
     <div class="container"> 
@@ -30,7 +43,7 @@
         <!-- Hidden input to store the project ID -->
         <input class="form-control" type="hidden" name="projectId" value="<%= projectId %>">
 
-        <input class="form-control" type="submit" value="Create Issue">
+        <input class="form-control create-issue-btn" type="submit" value="Create Issue">
     </form>
 </div>
 </div>
